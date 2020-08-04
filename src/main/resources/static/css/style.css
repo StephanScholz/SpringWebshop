@@ -5,6 +5,23 @@
   font-weight: normal;
   font-style: normal;
 }
+/* Store Items
+-------------------------------------------------- */
+.StoreContainer {
+    text-align: left;
+    position: relative;
+}
+.StoreItemContainer {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    margin: 1% 0 1% 0;
+    border-style: ridge;
+}
+.StoreItem {
+    display: inline-block;
+    width: 80%;
+}
 /* =======================================================
 *
 * 	Template Style 

@@ -16,4 +16,9 @@ public class IndexController {
     public ModelAndView contact() {
         return new ModelAndView("contact");
     }
+
+    @GetMapping(value = {"/shop", "shop.html"})
+    public ModelAndView shop() {
+        return new ModelAndView("shop");
+    }
 }
