@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<body>
+    <header th:fragment="header (name, value)" id="gtco-header" class="gtco-cover gtco-cover-xs gtco-inner" role="banner">
+        <div class="gtco-container">
+            <div class="row">
+                <div class="col-md-12 col-md-offset-0 text-left">
+                    <div class="display-t">
+                        <div class="display-tc">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <h1 class="no-margin"><span th:text="${name}"></span></h1>
+                                    <p><span th:text="${value}"></span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+</body>
+</html>
