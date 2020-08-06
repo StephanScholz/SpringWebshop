@@ -1,19 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>SpringWebshop</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link href="https://fonts.googleapis.com/css?family=Raleway:100,300,400,700" rel="stylesheet">
-
-    <!-- Bootstrap  -->
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <!-- Theme style  -->
-    <link rel="stylesheet" href="css/style.css">
-    <!-- Modernizr JS -->
-    <script src="js/modernizr-2.6.2.min.js"></script>
+<head th:insert="fragments/head">
 
 </head>
 <body>
@@ -23,24 +10,51 @@
 
     <div th:insert="fragments/header :: header(name='Shop', value='Webshop Page with Thymeleaf Fragment Insertion')"></div>
 
-    <div class="StoreContainer">
-        <div class="StoreItemContainer">
-            <div class="StoreItem">
-                <table class="table">
-                    <tbody>
-                    <tr>
-                        <td style="width:20%">
-                            This is the Title
-                        </td>
-                        <td style="width:60%">
-                            This is the description
-                        </td>
-                        <td style="width:20%">
-                            This is the Price
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
+    <div class="store-container">
+        <div class="store-item-container">
+            <div class="gtco-services">
+                <div class="gtco-container">
+                    <div th:each="item: ${itemList}" class="row row-pb-md">
+                        <div class="service">
+                            <table class="item-table">
+                                <tbody>
+                                <tr>
+                                    <th>
+                                        <h3 th:text="${item.title}"></h3>
+                                    </th>
+                                    <th>
+                                        <h3>Price</h3>
+                                    </th>
+                                    <th>
+                                        <h3>Quantity</h3>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <td th:text="${item.description}"></td>
+                                    <td th:text="${item.price}"></td>
+                                    <td>
+                                        <div class="StoreSubmit">
+                                            <select id="Amount" name="Amount">
+                                                <option value="1" selected>1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                                <option value="10">10</option>
+                                            </select>
+                                        </div>
+                                    </td>
+                                    <td><input class="SubmitButton" type="submit" value="Add to Cart" /></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

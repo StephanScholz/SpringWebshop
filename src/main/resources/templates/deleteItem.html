@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments/head">
+
+</head>
+<body>
+    <div class="gtco-loader"></div>
+
+    <div th:insert="fragments/navigation :: navbar"></div>
+
+    <div th:insert="fragments/header :: header(name='Delete Items', value='Delete Items Page with Thymeleaf Fragment Insertion')"></div>
+
+    <div class="gtco-section">
+        <div class="gtco-container">
+            <h4>StoreItem</h4>
+            <hr />
+            <dl class="row">
+                <form action="#" th:action="@{/delete}" th:object="${item}" method="post">
+                    <dt class = "col-sm-2">
+                        <span id="title" th:field="*{title}"></span>
+                    </dt>
+                    <dd class = "col-sm-10">
+                        <span id="description" th:field="*{description}"></span>
+                    </dd>
+                    <dt class = "col-sm-2">
+                        <span id="price" th:field="*{price}"></span>
+                    </dt>
+                    <dd class = "col-sm-10">
+                        <input type="submit" class="btn btn btn-special" value="Delete">
+                    </dd>
+                </form>
+            </dl>
+            <div class="row">
+                <a th:href="@{/admin}">Back</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="js/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Main -->
+    <script src="js/main.js"></script>
+</body>
+</html>

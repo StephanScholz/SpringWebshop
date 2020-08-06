@@ -7,17 +7,19 @@ import javax.persistence.*;
 public class ShopItem {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     private String title;
     private String description;
     private float price;
 
     public ShopItem() {}
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
+
+    public void setId(Integer id) {this.id = id;}
 
     public String getTitle() {
         return title;

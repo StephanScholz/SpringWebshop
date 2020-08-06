@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments/head">
+
+</head>
+<body>
+
+    <div class="gtco-loader"></div>
+
+    <div th:insert="fragments/navigation :: navbar"></div>
+
+    <div th:insert="fragments/header :: header(name='Shop', value='Webshop Page with Thymeleaf Fragment Insertion')"></div>
+
+    <div class="gtco-section">
+        <div class="gtco-container">
+            <div class="row">
+                <div class="col-md-12">
+                    <form action="#" th:action="@{/edit}" th:object="${item}" method="post">
+                        <div class="form-group">
+                            <label for="title"><b>Id:</b></label>
+                            <label for="id" th:text="*{id}"></label>
+                            <input type="hidden" th:field="*{id}">
+                        </div>
+                        <div class="form-group">
+                            <label for="title">Title</label>
+                            <input type="text" class="form-control" id="title" th:field="*{title}" maxlength="45">
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <input type="text" class="form-control" id="description" th:field="*{description}" maxlength="45">
+                        </div>
+                        <div class="form-group">
+                            <label for="price">Price</label>
+                            <input type="text" class="form-control" id="price" th:field="*{price}">
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btn btn btn-special" value="Save">
+                            <input type="reset" class="btn btn btn-special" value="Reset">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <a th:href="@{/admin}">Back</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="js/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Main -->
+    <script src="js/main.js"></script>
+
+</body>
+</html>

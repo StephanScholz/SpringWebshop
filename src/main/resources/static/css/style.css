@@ -7,21 +7,34 @@
 }
 /* Store Items
 -------------------------------------------------- */
-.StoreContainer {
+.store-container {
     text-align: left;
     position: relative;
 }
-.StoreItemContainer {
+.store-item-container {
     position: relative;
     display: inline-block;
     width: 100%;
     margin: 1% 0 1% 0;
-    border-style: ridge;
 }
-.StoreItem {
+.store-item {
     display: inline-block;
-    width: 80%;
+    width: 100%;
 }
+.price-element {
+
+}
+.item-table {
+    width: 100%;
+    text-align: left;
+    margin-left: 30px;
+}
+#create-item {
+    position: relative;
+    display: inline-block;
+    padding: 1.5em 3em;
+}
+
 /* =======================================================
 *
 * 	Template Style 
@@ -417,13 +430,16 @@ h1, h2, h3, h4, h5, h6, figure {
   zoom: 1;
   *display: inline;
 }
-
 .gtco-services {
-  padding: 7em 0;
+    padding: 3em 0;
+}
+.service {
+    border: ridge;
 }
 .gtco-services .service {
   margin-left: 10px;
   margin-right: 10px;
+  width: 100%;
   text-align: center;
   padding: 2em;
   margin-bottom: 30px;
@@ -449,7 +465,6 @@ h1, h2, h3, h4, h5, h6, figure {
   color: #000;
   text-align: left;
   position: relative;
-  padding-left: 30px;
 }
 .gtco-services .service h3 i {
   position: absolute;
