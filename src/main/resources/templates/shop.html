@@ -8,13 +8,13 @@
 
     <div th:insert="fragments/navigation :: navbar"></div>
 
-    <div th:insert="fragments/header :: header(name='Shop', value='Webshop Page with Thymeleaf Fragment Insertion')"></div>
+    <div th:insert="fragments/header :: header(name='Shop', value='Webshop Page, here you buy stuff!')"></div>
 
     <div class="store-container">
         <div class="store-item-container">
             <div class="gtco-services">
                 <div class="gtco-container">
-                    <div th:each="item: ${itemList}" class="row row-pb-md">
+                    <div th:each="item: ${shopItemList}" class="row row-pb-md">
                         <div class="service">
                             <table class="item-table">
                                 <tbody>
@@ -34,21 +34,26 @@
                                     <td th:text="${item.price}"></td>
                                     <td>
                                         <div class="StoreSubmit">
-                                            <select id="Amount" name="Amount">
-                                                <option value="1" selected>1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
-                                                <option value="5">5</option>
-                                                <option value="6">6</option>
-                                                <option value="7">7</option>
-                                                <option value="8">8</option>
-                                                <option value="9">9</option>
-                                                <option value="10">10</option>
-                                            </select>
+                                            <form action="#" th:action="@{/shop}" method="post">
+                                                <!-- submit id -->
+                                                <input type="hidden" th:name="itemId" th:value="${item.id}">
+                                                <!-- submit quantity -->
+                                                <select th:name="quantity" id="Amount" name="Amount">
+                                                    <option value="1" selected>1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                    <option value="6">6</option>
+                                                    <option value="7">7</option>
+                                                    <option value="8">8</option>
+                                                    <option value="9">9</option>
+                                                    <option value="10">10</option>
+                                                </select>
+                                                <input class="SubmitButton" type="submit" value="Add to Cart" />
+                                            </form>
                                         </div>
                                     </td>
-                                    <td><input class="SubmitButton" type="submit" value="Add to Cart" /></td>
                                 </tr>
                                 </tbody>
                             </table>

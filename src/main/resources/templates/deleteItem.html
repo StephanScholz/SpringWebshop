@@ -8,28 +8,32 @@
 
     <div th:insert="fragments/navigation :: navbar"></div>
 
-    <div th:insert="fragments/header :: header(name='Delete Items', value='Delete Items Page with Thymeleaf Fragment Insertion')"></div>
+    <div th:insert="fragments/header :: header(name='Delete Items', value='Delete Items Page, Delete stuff!')"></div>
 
     <div class="gtco-section">
         <div class="gtco-container">
-            <h4>StoreItem</h4>
-            <hr />
-            <dl class="row">
-                <form action="#" th:action="@{/delete}" th:object="${item}" method="post">
-                    <dt class = "col-sm-2">
-                        <span id="title" th:field="*{title}"></span>
-                    </dt>
-                    <dd class = "col-sm-10">
-                        <span id="description" th:field="*{description}"></span>
-                    </dd>
-                    <dt class = "col-sm-2">
-                        <span id="price" th:field="*{price}"></span>
-                    </dt>
-                    <dd class = "col-sm-10">
-                        <input type="submit" class="btn btn btn-special" value="Delete">
-                    </dd>
-                </form>
-            </dl>
+            <div class="row">
+                <div class="col-md-12">
+                    <form action="#" th:action="@{/delete}" th:object="${item}" method="post">
+                        <input type="hidden" th:field="*{id}">
+                        <div class="form-group">
+                            <label for="title">Title</label>
+                            <input type="text" class="form-control" id="title" th:field="*{title}" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <input type="text" class="form-control" id="description" th:field="*{description}" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="price">Price</label>
+                            <input type="text" class="form-control" id="price" th:field="*{price}" readonly>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btn btn btn-special" value="Delete">
+                        </div>
+                    </form>
+                </div>
+            </div>
             <div class="row">
                 <a th:href="@{/admin}">Back</a>
             </div>

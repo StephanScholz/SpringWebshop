@@ -1,27 +1,25 @@
 package com.sscholz.webshop.controller;
 
-import com.sscholz.webshop.dao.ShopItemDao;
 import com.sscholz.webshop.model.ShopItem;
+import com.sscholz.webshop.service.ShopItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 public class AdminController {
 
     @Autowired
-    private ShopItemDao dao;
+    private ShopItemService shopItemService;
 
     @GetMapping(value = {"/admin", "admin.html"})
     public String admin(Model model) {
         //list with Items
-        List<ShopItem> itemList = new ArrayList<ShopItem>();
-        dao.findAll().iterator().forEachRemaining(itemList::add);
+        List<ShopItem> itemList = shopItemService.getItemList();
         model.addAttribute("itemList", itemList);
         return "admin";
     }
@@ -35,23 +33,23 @@ public class AdminController {
     @PostMapping(value = {"/create", "createItem.html"})
     public String submitShopItem (@ModelAttribute(value = "item") ShopItem shopItem) {
 
-        dao.save(shopItem);
+        shopItemService.saveItem(shopItem);
 
         ModelAndView modelAndView = new ModelAndView("admin");
-        return "admin";
+        return "redirect:/admin";
     }
 
     //----------- Edit item -----------
     @GetMapping(value = {"/edit", "editItem.html"})
     public String editItem(Model model, @RequestParam(value = "itemId") Integer itemId) {
-        ShopItem item = dao.findById(itemId).get();
+        ShopItem item = shopItemService.getItemById(itemId);
         model.addAttribute("item", item);
         return "editItem";
     }
     @PostMapping(value = {"/edit", "editItem.html"})
     public String submitEditItem (@ModelAttribute(value = "item") ShopItem shopItem) {
 
-        dao.save(shopItem);
+        shopItemService.saveItem(shopItem);
 
         return "editItem";
     }
@@ -59,15 +57,17 @@ public class AdminController {
     //----------- Delete item -----------
     @GetMapping(value = {"/delete", "deleteItem.html"})
     public String deleteItem(Model model, @RequestParam(value = "itemId") Integer itemId) {
-        ShopItem item = dao.findById(itemId).get();
+        ShopItem item = shopItemService.getItemById(itemId);
         model.addAttribute("item", item);
         return "deleteItem";
     }
     @PostMapping(value = {"/delete", "deleteItem.html"})
     public String submitDeleteItem (@ModelAttribute(value = "item") ShopItem shopItem) {
 
-        dao.delete(shopItem);
+        System.out.println("shopItem-ID: "+shopItem.getId());
 
-        return "admin";
+        shopItemService.deleteItem(shopItem);
+
+        return "redirect:/admin";
     }
 }

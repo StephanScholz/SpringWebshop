@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments/head">
+
+</head>
+<body>
+
+    <div class="gtco-loader"></div>
+
+    <div th:insert="fragments/navigation :: navbar"></div>
+
+    <div th:insert="fragments/header :: header(name='Shopping Cart', value='Shopping Cart Page, look at your things here!')"></div>
+
+    <div class="store-container">
+        <div class="store-item-container">
+            <div class="gtco-services">
+                <div class="gtco-container">
+                    <div th:each="item: ${cartItemList}" class="row row-pb-md">
+                        <div class="service">
+                            <form action="#" th:action="@{/cart}" method="post">
+                                <table class="item-table">
+                                    <tbody>
+                                    <tr>
+                                        <th>
+                                            <h3 th:text="${item.shopItem.title}"></h3>
+                                        </th>
+                                        <th>
+                                            <h3>Price</h3>
+                                        </th>
+                                        <th>
+                                            <h3>Qty</h3>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <td th:text="${item.shopItem.description}"></td>
+                                        <td th:text="${item.shopItem.price}"></td>
+                                        <td th:text="${item.quantity}"></td>
+                                        <input type="hidden" th:name="cartItemId" th:value="${item.id}">
+                                        <input type="hidden" th:name="quantity" th:value="${item.quantity}">
+                                        <td><input class="SubmitButton" type="submit" value="Delete"></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="js/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Main -->
+    <script src="js/main.js"></script>
+
+</body>
+</html>

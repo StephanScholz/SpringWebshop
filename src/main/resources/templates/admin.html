@@ -8,7 +8,7 @@
 
     <div th:insert="fragments/navigation :: navbar"></div>
 
-    <div th:insert="fragments/header :: header(name='Admin', value='Admin Page with Thymeleaf Fragment Insertion')"></div>
+    <div th:insert="fragments/header :: header(name='Admin', value='Admin Page for creating, editing, deleting items')"></div>
 
     <div id="create-item">
         <a th:href="@{/create}">Create new item...</a>

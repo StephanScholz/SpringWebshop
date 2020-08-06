@@ -9,7 +9,7 @@
 
     <div th:insert="fragments/navigation :: navbar"></div>
 
-    <div th:insert="fragments/header :: header(name='Shop', value='Webshop Page with Thymeleaf Fragment Insertion')"></div>
+    <div th:insert="fragments/header :: header(name='Edit item', value='Edit item Page, Edit everything! Even yourself!')"></div>
 
     <div class="gtco-section">
         <div class="gtco-container">
@@ -17,9 +17,8 @@
                 <div class="col-md-12">
                     <form action="#" th:action="@{/edit}" th:object="${item}" method="post">
                         <div class="form-group">
-                            <label for="title"><b>Id:</b></label>
-                            <label for="id" th:text="*{id}"></label>
-                            <input type="hidden" th:field="*{id}">
+                            <label for="id"><b>Id:</b></label>
+                            <input type="text" class="form-control" id="id" th:field="*{id}" readonly>
                         </div>
                         <div class="form-group">
                             <label for="title">Title</label>
